@@ -1,0 +1,31 @@
+plugins {
+	id 'org.springframework.boot' version '2.3.5.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+	id 'java'
+}
+
+group = 'com.indiev'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'com.github.sarxos:webcam-capture:0.3.12'
+	implementation 'com.github.sarxos:webcam-capture-driver-ipcam:0.3.12'
+	implementation 'org.eclipse.jetty:jetty-server:9.4.33.v20201020'
+	implementation 'org.eclipse.jetty.websocket:websocket-server:9.4.33.v20201020'
+	implementation 'com.fasterxml.jackson.core:jackson-core:2.11.3'
+	implementation 'com.fasterxml.jackson.core:jackson-databind:2.11.3'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+}
+
+test {
+	useJUnitPlatform()
+}
