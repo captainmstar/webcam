@@ -22,7 +22,7 @@ public class WebcamCache implements WebcamUpdater.DelayCalculator, WebcamListene
 	/**
 	 * How often images are updated on Dasding server.
 	 */
-	private static final long DELAY = 10000;
+	private static final long DELAY = 100;
 
 	/**
 	 * Webcams list.
