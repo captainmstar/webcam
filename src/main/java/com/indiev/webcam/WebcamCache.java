@@ -1,5 +1,6 @@
 package com.indiev.webcam;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -42,6 +43,7 @@ public class WebcamCache implements WebcamUpdater.DelayCalculator, WebcamListene
 	public WebcamCache() {
 		for (Webcam webcam : Webcam.getWebcams()) {
 			webcam.addWebcamListener(this);
+			webcam.setViewSize(new Dimension(640, 480));
 			webcam.open(true, this);
 			webcams.put(webcam.getName(), webcam);
 		}
