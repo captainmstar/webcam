@@ -7,13 +7,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.github.sarxos.webcam.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.github.sarxos.webcam.Webcam;
-import com.github.sarxos.webcam.WebcamEvent;
-import com.github.sarxos.webcam.WebcamListener;
-import com.github.sarxos.webcam.WebcamUpdater;
 
 
 public class WebcamCache implements WebcamUpdater.DelayCalculator, WebcamListener {
@@ -43,8 +39,13 @@ public class WebcamCache implements WebcamUpdater.DelayCalculator, WebcamListene
 	public WebcamCache() {
 		for (Webcam webcam : Webcam.getWebcams()) {
 			webcam.addWebcamListener(this);
-			webcam.setViewSize(new Dimension(640, 480));
-			webcam.open(true, this);
+//			webcam.setViewSize(new Dimension(640, 480));
+			Dimension[] nonStandardResolutions = new Dimension[] {
+					WebcamResolution.HD.getSize()
+			};
+			webcam.setCustomViewSizes(nonStandardResolutions);
+			webcam.setViewSize(WebcamResolution.HD.getSize());
+			webcam.open(true);
 			webcams.put(webcam.getName(), webcam);
 		}
 	}
